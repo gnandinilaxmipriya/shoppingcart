@@ -1,0 +1,21 @@
+//package com.shopcart.backend.service;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//import org.springframework.web.multipart.MultipartFile;
+//
+//import com.shopcart.backend.model.Products;
+//import com.shopcart.backend.repository.ProductsRepository;
+//
+//@Service
+//public class ProductsService {
+//	
+//	@Autowired
+//	private ProductsRepository productsRepository;
+//	private String Folderpath="E:\\React -beehyv-assignments\\ShoppingCart\\images";
+//
+//	Products addProducts(Products products) {
+//		MultipartFile file = products.getFilepath();
+//		return null;
+//	}
+//}

@@ -1,0 +1,10 @@
+package com.shopcart.backend.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.shopcart.backend.model.Users;
+
+public interface UsersRepository extends JpaRepository<Users,Long>{
+
+	public Users findByemailAndpassword(String email,String password)
+}

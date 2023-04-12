@@ -1,0 +1,114 @@
+package com.shopcart.backend.controller;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.shopcart.backend.model.Address;
+import com.shopcart.backend.model.Users;
+import com.shopcart.backend.repository.UsersRepository;
+
+@RestController	
+@CrossOrigin("http://localhost:3000")
+public class UsersController {
+	
+	@Autowired
+	private UsersRepository usersRepository;
+	
+	
+	@PostMapping("/add")
+	Users newUsers(@RequestBody Users users)
+	{
+		return usersRepository.save(users);
+	}
+	
+	@GetMapping("/show")
+	List<Users> getAllUsers(){
+		return usersRepository.findAll();
+	}
+	
+	@GetMapping("/validate/{email}/{password}")
+	String validateUser(@PathVariable Map<String,String> map) {
+		String email = map.get("email");
+		String password = map.get("password");
+		List<Users> user = usersRepository.findByEmailAndPassword(email,password);
+		if(user.isEmpty())
+		{
+			return "false";
+		}else {
+			return "true";
+		}
+	}
+	
+	@GetMapping("/active/{email}")
+	String getActiveUser(@PathVariable Map<String,String> map)
+	{
+		String email = map.get("email");
+		List<Users> user = usersRepository.findByEmail(email);
+		if(user.isEmpty())
+		{
+			
+			return "false";
+		}else {
+			//already a user 
+			return "true";
+		}
+	}
+	
+	@GetMapping("/viewprofile/{email}")
+	List<Users> getProfile(@PathVariable("email") String email){
+		return usersRepository.findByEmail(email);
+	}
+
+	@PutMapping("/updatePassword/{email}")
+	Users updatePassword(@PathVariable("email")String email , @RequestBody Users user)
+	{
+//		Users existingUsers = usersRepository.findById(id).get();
+		Users existingUsers = usersRepository.findByEmail(email).get(0);
+//		existingUsers.setUname(users.getUname());
+//		existingUsers.setEmail(users.getEmail());
+//		existingUsers.setPhone(users.getPhone());
+//		existingUsers.setAddress(users.getAddress());
+//		existingUsers.setEmail(user.getEmail());
+		existingUsers.setPassword(user.getPassword());
+		return usersRepository.save(existingUsers);
+
+	}
+	
+	@PutMapping("/updateProfile/{email}")
+	Users updateProfile(@PathVariable("email")String email,@RequestBody Users users) {
+		Users existingUsers = usersRepository.findByEmail(email).get(0);
+		
+		existingUsers.setUname(users.getUname());
+		existingUsers.setEmail(users.getEmail());
+		existingUsers.setPhone(users.getPhone());
+		
+		existingUsers.setEmail(users.getEmail());
+		existingUsers.setPassword(existingUsers.getPassword());
+		
+		Address address = users.getAddress();
+		address.setStreet(address.getStreet());
+		address.setCity(address.getCity());
+		address.setState(address.getState());
+		address.setPincode(address.getPincode());
+		
+		existingUsers.setAddress(address);
+		return usersRepository.save(existingUsers);
+		
+	}
+//	@PutMapping("/changepass/{email}/{cpassword}")
+//	int changePassword(@PathVariable("email")String email,@PathVariable("cpassword")String cpassword)
+//	{
+//		int res = usersRepository.updatePassword(cpassword,email);
+//		return res;
+//	}
+}

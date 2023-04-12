@@ -1,0 +1,12 @@
+package com.shopcart.backend.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.shopcart.backend.model.Users;
+
+public interface UsersRepository extends JpaRepository<Users,Long>{
+
+	public List<Users> findByEmail(String email);
+}
