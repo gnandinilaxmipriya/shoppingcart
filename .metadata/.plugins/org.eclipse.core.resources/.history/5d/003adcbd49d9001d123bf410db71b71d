@@ -1,0 +1,23 @@
+package com.shopcart.backend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.shopcart.backend.model.Products;
+import com.shopcart.backend.service.ProductsService;
+
+@RestController	
+@CrossOrigin("http://localhost:3000")
+public class ProductsController {
+
+	@Autowired
+	ProductsService productsService;
+	@PostMapping("/addProduct")
+	Products newUsers(@RequestBody Products products)
+	{
+		return productsService.addProducts(products);
+	}
+}

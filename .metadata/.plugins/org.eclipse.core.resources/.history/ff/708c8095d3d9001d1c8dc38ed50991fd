@@ -1,0 +1,5 @@
+package com.shopcart.backend.model;
+
+public class Cart {
+
+}

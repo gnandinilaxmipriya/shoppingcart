@@ -1,0 +1,24 @@
+package com.shopcart.backend.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.shopcart.backend.model.Products;
+import com.shopcart.backend.repository.ProductsRepository;
+
+@Service
+public class ProductsService {
+	
+	@Autowired
+	private ProductsRepository productsRepository;
+
+	public Products addProducts(Products products) {
+		
+		return productsRepository.save(products);
+	}
+	public Products updateProducts(Long id,Products products)
+	{
+		Products existingProduct = productsRepository.findById(id).get();
+	}
+}

@@ -1,0 +1,15 @@
+package com.shopcart.backend.model;
+
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Cart {
+
+	@Id
+	Long cartId;
+	Long cartItemId;
+	Long userId;
+}

@@ -1,5 +1,8 @@
 package com.shopcart.backend.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,25 @@ public class ProductsService {
 	public Products addProducts(Products products) {
 		
 		return productsRepository.save(products);
+	}
+	public Products updateProducts(Long id,Products products)
+	{
+		Products existingProduct = productsRepository.findById(id).get();
+		existingProduct.setName(products.getName());
+		existingProduct.setPrice(products.getPrice());
+		existingProduct.setDetails(products.getDetails());
+		existingProduct.setCategory(products.getCategory());
+		existingProduct.setSubcategory(products.getSubcategory());
+		existingProduct.setFilepath(products.getFilepath());
+		return productsRepository.save(existingProduct);
+	}
+	
+	public Optional<Products> getProductById(Long id){
+		return productsRepository.findById(id);
+	}
+	
+	public List<Products> getAll()
+	{
+		return productsRepository.findAll();
 	}
 }

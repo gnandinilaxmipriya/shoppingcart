@@ -1,0 +1,39 @@
+package com.shopcart.backend.model;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+
+@Entity
+public class CartItem {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long cartItemId;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="productId", referencedColumnName="cartItemId")
+	private Products products;
+	private Long quantity;
+	public Long getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+	public Long getCartItemId() {
+		return cartItemId;
+	}
+	public Products getProducts() {
+		return products;
+	}
+	public void setCartItemId(Long cartItemId) {
+		this.cartItemId = cartItemId;
+	}
+	public void setProducts(Products products) {
+		this.products = products;
+	}
+}
