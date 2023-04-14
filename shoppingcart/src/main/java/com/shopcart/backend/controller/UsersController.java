@@ -80,6 +80,12 @@ public class UsersController {
 	List<Users> getProfile(@PathVariable("email") String email){
 		return usersRepository.findByEmail(email);
 	}
+	@GetMapping("/getUserId/{email}")
+	String getUserId(@PathVariable("email") String email) {
+		List<Users> li = usersRepository.findByEmail(email);
+		String id = li.get(0).getId().toString();
+		return id;
+	}
 
 	@PutMapping("/updatePassword/{email}")
 	Users updatePassword(@PathVariable("email")String email , @RequestBody Users user)

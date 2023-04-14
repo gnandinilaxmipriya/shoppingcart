@@ -14,7 +14,7 @@ public interface UsersRepository extends JpaRepository<Users,Long>{
 	public List<Users> findByEmailAndPassword(String email,String password);
 	
 	public List<Users> findByEmail(String email);
-	@Modifying
-	@Query("UPDATE Users SET password=(:password) WHERE email=(:email)")
-	public int updatePassword(@Param("password")String password, @Param("email")String email);
+//	@Modifying
+//	@Query("UPDATE Users SET password=(:password) WHERE email=(:email)")
+//	public int updatePassword(@Param("password")String password, @Param("email")String email);
 }

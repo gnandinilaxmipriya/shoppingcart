@@ -1,0 +1,21 @@
+package com.shopcart.backend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.shopcart.backend.model.Cart;
+import com.shopcart.backend.service.CartService;
+
+
+
+public class CartController {
+
+
+	@Autowired
+	private CartService cartService;
+	
+	@PostMapping("/cart/{userId}/add/{productId}")
+	public Cart addCart(Cart cart) {
+		return cartService.getCart(cart);
+	}
+}

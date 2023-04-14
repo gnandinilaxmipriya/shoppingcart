@@ -1,0 +1,16 @@
+package com.shopcart.backend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.shopcart.backend.service.CartService;
+
+
+
+public class CartController {
+
+
+	@Autowired
+	private CartService cartService;
+	
+	
+}

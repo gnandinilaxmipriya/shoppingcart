@@ -1,0 +1,33 @@
+package com.shopcart.backend.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.shopcart.backend.model.Cart;
+import com.shopcart.backend.service.CartService;
+
+
+@RestController
+public class CartController {
+
+
+	@Autowired
+	private CartService cartService;
+	
+	@PutMapping("/cart/{userId}/add/{productId}")
+	public Cart addCart(@RequestBody Cart cart) {
+		return cartService.addCart(cart);
+	}
+	@GetMapping("/cart/{userId}/get/{productId}/{cartitemId}")
+	public List<Object> getCart(@PathVariable("cartitemId") Long cartitemId, @PathVariable Long productId)
+	{
+		return cartService.getCartItems(cartitemId, productId);
+	}
+}
