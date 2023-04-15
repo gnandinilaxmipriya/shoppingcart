@@ -1,0 +1,26 @@
+package com.shopcart.backend.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shopcart.backend.model.Orders;
+import com.shopcart.backend.repository.OrderRepository;
+
+@Service
+public class OrderService {
+
+	@Autowired
+	private OrderRepository orderRepository; 
+	
+	public Orders addtoorder(Orders order) {
+		return orderRepository.save(order);
+	}
+	public List<Orders> getOrderedItems(){
+		return orderRepository.findAllByOrderByOrderIdAsc();	
+	}
+	public List<Orders> getOrderedItemsByTime(){
+		return orderRepository.findAllByOrderByTimeDesc();	
+	}
+}

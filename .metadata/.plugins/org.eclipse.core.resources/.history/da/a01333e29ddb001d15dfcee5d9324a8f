@@ -1,0 +1,23 @@
+package com.shopcart.backend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.shopcart.backend.model.SuperOrders;
+import com.shopcart.backend.service.SuperOrdersService;
+
+@RestController
+@CrossOrigin("http://localhost:3000")
+public class SuperOrdersController {
+
+	@Autowired
+	private SuperOrdersService superOrdersService; 
+	@PostMapping("/order/{userId}/createOrder")
+	public SuperOrders addOrder(@RequestBody SuperOrders order) {
+		return superOrdersService.addtoorder(order);
+	}
+}

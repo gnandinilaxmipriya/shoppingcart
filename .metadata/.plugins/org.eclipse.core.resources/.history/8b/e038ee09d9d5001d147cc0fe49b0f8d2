@@ -1,6 +1,0 @@
-package com.shopcart.backend.model;
-
-@Entity
-public class Users {
-
-}

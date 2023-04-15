@@ -1,0 +1,19 @@
+package com.shopcart.backend.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shopcart.backend.model.Orders;
+import com.shopcart.backend.model.SuperOrders;
+import com.shopcart.backend.repository.SuperOrdersRepository;
+
+@Service
+public class SuperOrdersService {
+
+	@Autowired 
+	SuperOrdersRepository superOrdersRepository;
+	
+	public SuperOrders addtoorder(SuperOrders order) {
+		return superOrdersRepository.save(order);
+	}
+}

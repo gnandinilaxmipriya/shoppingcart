@@ -1,0 +1,13 @@
+package com.shopcart.backend.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shopcart.backend.model.SuperOrders;
+
+@Service
+public class SuperOrdersService {
+
+	@Autowired 
+	SuperOrders superOrders;
+}

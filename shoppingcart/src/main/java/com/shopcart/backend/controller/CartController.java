@@ -1,5 +1,6 @@
 package com.shopcart.backend.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,14 @@ public class CartController {
 	@DeleteMapping("/cart/empty/{userId}")
 	public void deleteAllcartitems(@PathVariable("userId")Long userId) {
 		cartService.deleteAllCartItems(userId);
+	}
+	@GetMapping("/cart/getProducts/{userId}")
+	public List<Object> getproductsofUserid(@PathVariable("userId")Long userId){
+		return cartService.getProductsofUserId(userId);
+		
+	}
+	@GetMapping("/cart/totalprice/{userId}")
+	public HashMap<Long,Long>  getTotalPrice(@PathVariable("userId")Long userId){
+		return cartService.getTotalPrice(userId);
 	}
 }

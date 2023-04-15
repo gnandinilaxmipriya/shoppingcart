@@ -1,0 +1,43 @@
+package com.shopcart.backend.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shopcart.backend.model.Orders;
+import com.shopcart.backend.repository.CartRepository;
+import com.shopcart.backend.repository.OrderRepository;
+
+@Service
+public class OrderService {
+
+	@Autowired
+	private OrderRepository orderRepository; 
+	
+	@Autowired
+	private CartService cartService; 
+	
+	public Orders addtoorder(Orders order) {
+		return orderRepository.save(order);
+	}
+	public List<Orders> getOrderedItems(){
+		return orderRepository.findAllByOrderByOrderIdAsc();	
+	}
+	public List<Orders> getOrderedItemsByTime(Long userId){
+//		List<Orders> list = orderRepository.findByUserId(userId);
+//		List<Object> ans = new ArrayList<>();
+//		
+//		for(Orders l: list) {
+//			HashMap<String,String> ordhash = new HashMap<String,String>();
+//			ordhash.put("orderId",l.getOrderId().toString());
+//			ordhash.put("orderstatus",l.getOrderstatus());
+//			ordhash.put("cartitemId",l.getCartitemId().toString());
+//			ordhash.put("userId",l.getUserId().toString());
+//			List<Object> cartli = cartService.getProductsofUserId(l.getUserId());
+//			
+//		}
+		return orderRepository.findByUserIdOrderByTimeDesc(userId);
+	}
+}
