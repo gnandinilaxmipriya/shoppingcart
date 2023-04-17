@@ -1,0 +1,17 @@
+package com.shopcart.backend.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.shopcart.backend.model.Products;
+
+public interface ProductsRepository extends JpaRepository<Products,Long>{
+
+	@Query("SELECT p FROM Products p WHERE "+"CONCAT(p.name, p.details, p.category, p.price)"+" LIKE %?1%")
+	public List<Products> findAll(String keyword);
+	//select * from products p where p.category="heyye" and concat(p.name, p.price) like "%?1%";
+	@Query("SELECT p FROM products p where p.category=?1"+" AND CONCAT(p.name, p.price)"+"LIKE %?2%")
+	public List<Products> findAll(String category,String keyword);
+}

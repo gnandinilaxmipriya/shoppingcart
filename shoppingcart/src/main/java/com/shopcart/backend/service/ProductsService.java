@@ -1,12 +1,14 @@
 package com.shopcart.backend.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.shopcart.backend.model.Products;
 import com.shopcart.backend.repository.ProductsRepository;
 
@@ -40,4 +42,31 @@ public class ProductsService {
 	{
 		return productsRepository.findAll();
 	}
+	public List<Products> getAllByKeyword(String keyword){
+		return productsRepository.findAll(keyword);
+	}
+	public List<Products> getAllByFiltername(String category,ObjectNode map){
+		String keyword = map.get("name").asText();
+		return productsRepository.findAllByFilterName(category, keyword);
+		
+		
+	}
+	public List<Products> getAllByFilterprice(String category,ObjectNode map){
+		String keyword = map.get("price").asText();
+		return productsRepository.findAllByFilterPrice(category, keyword);
+		
+	}
+	
+	public List<Products> getAllByFilter(String category,ObjectNode map){
+		String name = map.get("name").asText();
+		String price = map.get("price").asText();
+		return productsRepository.findAllByFilter(category, name, price);
+		
+	}
+	public List<Products> getAllByCategory(String category){
+		
+		return productsRepository.findAllByCategory(category);
+		
+	}
 }
+

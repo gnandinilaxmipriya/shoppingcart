@@ -1,0 +1,67 @@
+package com.shopcart.backend.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.shopcart.backend.model.Products;
+import com.shopcart.backend.repository.ProductsRepository;
+
+@Service
+public class ProductsService {
+	
+	@Autowired
+	private ProductsRepository productsRepository;
+
+	public Products addProducts(Products products) {
+		
+		return productsRepository.save(products);
+	}
+	public Products updateProducts(Long id,Products products)
+	{
+		Products existingProduct = productsRepository.findById(id).get();
+		existingProduct.setName(products.getName());
+		existingProduct.setPrice(products.getPrice());
+		existingProduct.setDetails(products.getDetails());
+		existingProduct.setCategory(products.getCategory());
+		existingProduct.setSubcategory(products.getSubcategory());
+		existingProduct.setFilepath(products.getFilepath());
+		return productsRepository.save(existingProduct);
+	}
+	
+	public Optional<Products> getProductById(Long id){
+		return productsRepository.findById(id);
+	}
+	
+	public List<Products> getAll()
+	{
+		return productsRepository.findAll();
+	}
+	public List<Products> getAllByKeyword(String keyword){
+		return productsRepository.findAll(keyword);
+	}
+	public List<Products> getAllByFilter(String category,Map<String,String> map){
+		String keyword = map.get(map.get("filterName"));
+		return productsRepository.findAllByFilterName(category, keyword);
+		
+//		if(keyword)
+//		{
+//		return productsRepository.findAllByFilterName(category, keyword2);
+//		}
+//		else {
+//			return null;
+//		}
+//		else if(!keyword2.isEmpty())
+//		{
+//			return productsRepository.findAllByFilterPrice(category, keyword2);
+//		}else {
+//			return productsRepository.findAllByFilter(category, keyword1);
+//		}
+	}
+}
+

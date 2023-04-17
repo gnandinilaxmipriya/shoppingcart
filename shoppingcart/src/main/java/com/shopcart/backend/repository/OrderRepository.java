@@ -15,6 +15,6 @@ public interface OrderRepository extends JpaRepository<Orders,Long>{
 //	 public List<Orders> findByUserId();
 	public List<Orders> findByUserId(Long userId);
 	
-	@Query("FROM Orders WHERE userId = ?1 ORDER BY time DESC,date DESC")
+	@Query("FROM Orders WHERE userId = ?1 ORDER BY date,time DESC")
 	List<Orders> findByUserIdOrderByTimeDesc(Long userId);
 }
