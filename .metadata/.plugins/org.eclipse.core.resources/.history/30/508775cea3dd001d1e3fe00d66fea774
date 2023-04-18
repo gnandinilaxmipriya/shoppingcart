@@ -1,0 +1,37 @@
+package com.shopcart.backend.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.shopcart.backend.model.Users;
+import com.shopcart.backend.repository.UsersRepository;
+
+@Service
+public class UsersService {
+
+	@Autowired
+	private UsersRepository usersRepository;
+	Users newUsers(Users users)
+	{
+		return usersRepository.save(users);
+	}
+	List<Users> getAllUsers(){
+		
+		return usersRepository.findAll();
+	}
+	String validateUser(Map<String,String> map) {
+		String email = map.get("email");
+		String password = map.get("password");
+		List<Users> user = usersRepository.findByEmailAndPassword(email,password);
+		if(user.isEmpty())
+		{
+			return "false";
+		}else {
+			return "true";
+		}
+	}
+}

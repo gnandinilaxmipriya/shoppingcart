@@ -1,0 +1,33 @@
+package com.shopcart.backend.Users;
+
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.*;  
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.shopcart.backend.repository.UsersRepository;
+import com.shopcart.backend.service.UsersService;
+
+public class UsersTests {
+	
+	@MockBean
+	private UsersRepository usersRepository ;
+
+	private UsersService usersService; 
+	
+	@Test
+	public void checkUserExists() {
+		HashMap<String,String> map = new HashMap<String,String>();
+		String email = "nandy@gmail";
+		String password ="444";
+		map.put("email", email);
+		map.put("password", password);
+		Mockito.when(usersRepository.findByEmailAndPassword(email, password)).then(null);
+		String result = usersService.validateUser(map);
+		assertEquals("true",result);
+	}
+}

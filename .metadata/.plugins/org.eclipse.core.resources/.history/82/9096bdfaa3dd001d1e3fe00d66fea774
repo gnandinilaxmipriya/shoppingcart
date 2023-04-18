@@ -1,0 +1,61 @@
+package com.shopcart.backend.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.shopcart.backend.model.Users;
+import com.shopcart.backend.repository.UsersRepository;
+
+@Service
+public class UsersService {
+
+	@Autowired
+	private UsersRepository usersRepository;
+	Users newUsers(Users users)
+	{
+		return usersRepository.save(users);
+	}
+	List<Users> getAllUsers(){
+		
+		return usersRepository.findAll();
+	}
+	String validateUser(Map<String,String> map) {
+		String email = map.get("email");
+		String password = map.get("password");
+		List<Users> user = usersRepository.findByEmailAndPassword(email,password);
+		if(user.isEmpty())
+		{
+			return "false";
+		}else {
+			return "true";
+		}
+	}
+	String getActiveUser(Map<String,String> map)
+	{
+		String email = map.get("email");
+		List<Users> user = usersRepository.findByEmail(email);
+		if(user.isEmpty())
+		{
+			
+			return "false";
+		}else {
+			//already a user 
+//			throw new UserEmailNotFoundException("Email Id exists");
+			return "true";
+		}
+	}
+	List<Users> getProfile(String email){
+		return usersRepository.findByEmail(email);
+	}
+	@GetMapping("/getUserId/{email}")
+	String getUserId(@PathVariable("email") String email) {
+		List<Users> li = usersRepository.findByEmail(email);
+		String id = li.get(0).getId().toString();
+		return id;
+	}
+}

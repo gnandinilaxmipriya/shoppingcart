@@ -1,0 +1,68 @@
+package com.shopcart.backend.Cart;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.shopcart.backend.repository.CartRepository;
+import com.shopcart.backend.repository.ProductsRepository;
+import com.shopcart.backend.service.CartService;
+import com.shopcart.backend.service.ProductsService;
+import com.shopcart.backend.model.Cart;
+import com.shopcart.backend.model.Products;
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+import java.util.Optional;
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+public class CartTests {
+	
+	@MockBean
+	CartRepository cartRepository;
+	
+	@InjectMocks
+	CartService cartServices;
+	
+	@InjectMocks
+	ProductsRepository productsRepository;
+	
+	@Test
+	public void getAllCartUserId() {
+		Cart cart = new Cart();
+		cart.setCartitemId((long) 1);
+		cart.setProductId((long)14);
+		cart.setUserId((long) 4);
+		cart.setQuantity(3);
+		Mockito.when(cartRepository.findByUserId((long) 4)).thenReturn(asList(cart));
+		List<Cart> cart2 = cartServices.getAllCartUserId((long) 4);
+		assertEquals(cart,cart2.get(0));
+		
+		
+	}
+	@Test
+	public void getCartItems() {
+		Cart cart = new Cart();
+		cart.setCartitemId((long) 1);
+		cart.setProductId((long)14);
+		cart.setUserId((long) 4);
+		cart.setQuantity(3);
+		
+		Products products = new Products();
+		products.setName("nokia");
+		products.setCategory("smart phone");
+		products.setPrice("1000");
+		products.setProductId((long)14);
+	
+		Mockito.when(cartRepository.findByCartitemIdAndUserId((long) 1, (long) 4));
+		Mockito.when(productsRepository.findById((long) 4)).thenReturn(Optional.of(products));
+		
+		List<Object> cart2 = cartServices.getCartItems((long) 4, (long) 1, (long)14);
+		
+	}
+}

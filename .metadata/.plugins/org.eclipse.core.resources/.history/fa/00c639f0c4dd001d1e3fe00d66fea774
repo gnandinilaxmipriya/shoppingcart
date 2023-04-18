@@ -1,0 +1,32 @@
+package com.shopcart.backend.Cart;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.shopcart.backend.repository.CartRepository;
+import com.shopcart.backend.service.CartService;
+import com.shopcart.backend.model.Cart;
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+public class CartTests {
+	
+	@MockBean
+	CartRepository cartRepository;
+	
+	@InjectMocks
+	CartService cartServices;
+	
+	@Test
+	public void getAllCartUserId() {
+		Cart cart = new Cart();
+		cart.setCartitemId((long) 1);
+		cart.setProductId((long) (14);
+		
+		
+		
+	}
+}

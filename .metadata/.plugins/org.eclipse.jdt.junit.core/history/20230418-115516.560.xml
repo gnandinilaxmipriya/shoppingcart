@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UsersTests" project="shoppingcart" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.shopcart.backend.Users.UsersTests" time="0.318" displayname="UsersTests" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]">
+    <testcase name="checkUserExists" classname="com.shopcart.backend.Users.UsersTests" time="0.187" displayname="checkUserExists()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:checkUserExists()]"/>
+    <testcase name="getNotExistingProfile" classname="com.shopcart.backend.Users.UsersTests" time="0.021" displayname="getNotExistingProfile()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getNotExistingProfile()]"/>
+    <testcase name="getNotActiveUser" classname="com.shopcart.backend.Users.UsersTests" time="0.019" displayname="getNotActiveUser()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getNotActiveUser()]"/>
+    <testcase name="getProfile" classname="com.shopcart.backend.Users.UsersTests" time="0.019" displayname="getProfile()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getProfile()]"/>
+    <testcase name="checkUserDoesntexists" classname="com.shopcart.backend.Users.UsersTests" time="0.016" displayname="checkUserDoesntexists()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:checkUserDoesntexists()]"/>
+    <testcase name="getActiveUser" classname="com.shopcart.backend.Users.UsersTests" time="0.017" displayname="getActiveUser()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getActiveUser()]"/>
+  </testsuite>
+</testrun>

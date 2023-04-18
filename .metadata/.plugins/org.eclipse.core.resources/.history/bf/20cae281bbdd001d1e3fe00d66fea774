@@ -1,0 +1,61 @@
+package com.shopcart.backend.Products;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.shopcart.backend.repository.ProductsRepository;
+import com.shopcart.backend.service.ProductsService;
+import com.shopcart.backend.model.*;
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
+import java.util.Optional;
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+public class ProductsTest {
+	
+	@MockBean
+	ProductsRepository productsRepository; 
+	
+	@InjectMocks
+	ProductsService productsService;
+
+	@Test
+	public void getProductById() {
+		
+		Products product = new Products();
+		int id= 1;
+		product.setProductId((long) 1);
+		Mockito.when(productsRepository.findById((long) id)).thenReturn(Optional.of(product));
+		Optional<Products> product2 = productsService.getProductById((long) id);
+		assertNotNull(product2);
+		
+	}
+	
+	@Test
+	public void getAll() {
+		Products product = new Products();
+		int id= 1;
+		product.setProductId((long) id);
+		Mockito.when(productsRepository.findAll()).thenReturn(asList(product));
+		List<Products> product2 = productsService.getAll();
+		assertNotNull(product2);
+	}
+	
+	@Test
+	public void getAllByKeyword() {
+		Products product = new Products();
+		int id= 1;
+		product.setProductId((long) id);
+		product.setCategory("Device");
+		Mockito.when(productsRepository.findAll("Device")).thenReturn(asList(product));
+		List<Products> product2 = productsService.getAllByCategory("Device");
+		assertNotNull(product2);
+	}
+}

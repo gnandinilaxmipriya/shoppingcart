@@ -1,0 +1,22 @@
+package com.shopcart.backend.Order;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.shopcart.backend.repository.OrderRepository;
+import com.shopcart.backend.service.OrderService;
+
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+public class OrderTests {
+
+	@MockBean
+	OrderRepository orderRepository;
+	
+	@InjectMocks
+	OrderService orderService;
+	
+}

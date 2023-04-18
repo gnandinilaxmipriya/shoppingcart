@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductsTest" project="shoppingcart" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.shopcart.backend.Products.ProductsTest" time="0.087" displayname="ProductsTest" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]">
+    <testcase name="getProductById" classname="com.shopcart.backend.Products.ProductsTest" time="0.087" displayname="getProductById()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]/[method:getProductById()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,12 @@
+package com.shopcart.backend.Users;
+
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.shopcart.backend.repository.UsersRepository;
+
+public class UsersTests {
+	
+	@MockBean
+	private UsersRepository sersRepository ;
+
+}

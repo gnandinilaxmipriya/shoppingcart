@@ -20,6 +20,7 @@ import com.shopcart.backend.model.Address;
 import com.shopcart.backend.model.Users;
 import com.shopcart.backend.repository.AddressRepository;
 import com.shopcart.backend.repository.UsersRepository;
+import com.shopcart.backend.service.UsersService;
 
 @RestController	
 @CrossOrigin("http://localhost:3000")
@@ -27,19 +28,22 @@ public class UsersController {
 	
 	@Autowired
 	private UsersRepository usersRepository;
-	
+	@Autowired
+	private UsersService usersServices;
 //	@Autowired
 //	private AddressRepository addressRepository;
 	@PostMapping("/add")
 	Users newUsers(@RequestBody Users users)
 	{
-		return usersRepository.save(users);
+//		return usersRepository.save(users);
+	return usersServices.addnewUsers(users);
 	}
 	
 	@GetMapping("/show")
 	List<Users> getAllUsers(){
 		
-		return usersRepository.findAll();
+//		return usersRepository.findAll();
+		return usersServices.getAllUsers();
 	}
 //	@GetMapping("/showaddress")
 //	List<Address> getAllAddress(){
@@ -49,79 +53,85 @@ public class UsersController {
 	
 	@GetMapping("/validate/{email}/{password}")
 	String validateUser(@PathVariable Map<String,String> map) {
-		String email = map.get("email");
-		String password = map.get("password");
-		List<Users> user = usersRepository.findByEmailAndPassword(email,password);
-		if(user.isEmpty())
-		{
-			return "false";
-		}else {
-			return "true";
-		}
+//		String email = map.get("email");
+//		String password = map.get("password");
+//		List<Users> user = usersRepository.findByEmailAndPassword(email,password);
+//		if(user.isEmpty())
+//		{
+//			return "false";
+//		}else {
+//			return "true";
+//		}
+		return usersServices.validateUser(map);
 	}
 	
 	@GetMapping("/active/{email}")
 	String getActiveUser(@PathVariable Map<String,String> map)
 	{
-		String email = map.get("email");
-		List<Users> user = usersRepository.findByEmail(email);
-		if(user.isEmpty())
-		{
-			
-			return "false";
-		}else {
-			//already a user 
-//			throw new UserEmailNotFoundException("Email Id exists");
-			return "true";
-		}
+//		String email = map.get("email");
+//		List<Users> user = usersRepository.findByEmail(email);
+//		if(user.isEmpty())
+//		{
+//			
+//			return "false";
+//		}else {
+//			//already a user 
+////			throw new UserEmailNotFoundException("Email Id exists");
+//			return "true";
+//		}
+		return usersServices.getActiveUser(map);
 	}
 	
 	@GetMapping("/viewprofile/{email}")
 	List<Users> getProfile(@PathVariable("email") String email){
-		return usersRepository.findByEmail(email);
+//		return usersRepository.findByEmail(email);
+		return usersServices.getProfile(email);
 	}
 	@GetMapping("/getUserId/{email}")
 	String getUserId(@PathVariable("email") String email) {
-		List<Users> li = usersRepository.findByEmail(email);
-		String id = li.get(0).getId().toString();
-		return id;
+//		List<Users> li = usersRepository.findByEmail(email);
+//		String id = li.get(0).getId().toString();
+//		return id;
+		return usersServices.getUserId(email);
 	}
 
 	@PutMapping("/updatePassword/{email}")
 	Users updatePassword(@PathVariable("email")String email , @RequestBody Users user)
 	{
-//		Users existingUsers = usersRepository.findById(id).get();
-		Users existingUsers = usersRepository.findByEmail(email).get(0);
-//		existingUsers.setUname(users.getUname());
-//		existingUsers.setEmail(users.getEmail());
-//		existingUsers.setPhone(users.getPhone());
-//		existingUsers.setAddress(users.getAddress());
-//		existingUsers.setEmail(user.getEmail());
-		existingUsers.setPassword(user.getPassword());
-		return usersRepository.save(existingUsers);
+////		Users existingUsers = usersRepository.findById(id).get();
+//		Users existingUsers = usersRepository.findByEmail(email).get(0);
+////		existingUsers.setUname(users.getUname());
+////		existingUsers.setEmail(users.getEmail());
+////		existingUsers.setPhone(users.getPhone());
+////		existingUsers.setAddress(users.getAddress());
+////		existingUsers.setEmail(user.getEmail());
+//		existingUsers.setPassword(user.getPassword());
+//		return usersRepository.save(existingUsers);
+		return usersServices.updatePassword(email, user);
 
 	}
 	
 	@PutMapping("/updateProfile/{email}")
 	Users updateProfile(@PathVariable("email")String email,@RequestBody Users users) {
-		Users existingUsers = usersRepository.findByEmail(email).get(0);
-		
-		existingUsers.setUname(users.getUname());
-		existingUsers.setEmail(users.getEmail());
-		existingUsers.setPhone(users.getPhone());
-		
+//		Users existingUsers = usersRepository.findByEmail(email).get(0);
+//		
+//		existingUsers.setUname(users.getUname());
 //		existingUsers.setEmail(users.getEmail());
-//		existingUsers.setPassword(existingUsers.getPassword());
-		
-		Address address = users.getAddress();
-//		address.setId(address.getId());
-		address.setStreet(address.getStreet());
-		address.setCity(address.getCity());
-		address.setState(address.getState());
-		address.setPincode(address.getPincode());
-		
-		existingUsers.setAddress(address);
-		return usersRepository.save(existingUsers);
+//		existingUsers.setPhone(users.getPhone());
+//		
+////		existingUsers.setEmail(users.getEmail());
+////		existingUsers.setPassword(existingUsers.getPassword());
+//		
+//		Address address = users.getAddress();
+////		address.setId(address.getId());
+//		address.setStreet(address.getStreet());
+//		address.setCity(address.getCity());
+//		address.setState(address.getState());
+//		address.setPincode(address.getPincode());
+//		
+//		existingUsers.setAddress(address);
+//		return usersRepository.save(existingUsers);
+		return usersServices.updateProfile(email, users);
 		
 	}
 //	@PutMapping("/changepass/{email}/{cpassword}")

@@ -1,0 +1,30 @@
+package com.shopcart.backend.Products;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.shopcart.backend.repository.ProductsRepository;
+import com.shopcart.backend.service.ProductsService;
+import com.shopcart.backend.model.*;
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+public class ProductsTest {
+	
+	@MockBean
+	ProductsRepository productsRepository; 
+	
+	@InjectMocks
+	ProductsService productsService;
+
+	@Test
+	public void getProductById() {
+		
+		Products product = new Products();
+		Mockito.when(productsRepository.findAllById(null));
+	}
+}
