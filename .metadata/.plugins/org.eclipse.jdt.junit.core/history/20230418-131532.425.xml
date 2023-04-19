@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductsTest" project="shoppingcart" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopcart.backend.Products.ProductsTest" time="0.249" displayname="ProductsTest" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]">
-    <testcase name="getProductById" classname="com.shopcart.backend.Products.ProductsTest" time="0.053" displayname="getProductById()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]/[method:getProductById()]"/>
-    <testcase name="getAllByFilterprice" classname="com.shopcart.backend.Products.ProductsTest" time="0.167" displayname="getAllByFilterprice()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]/[method:getAllByFilterprice()]"/>
-    <testcase name="getAll" classname="com.shopcart.backend.Products.ProductsTest" time="0.006" displayname="getAll()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]/[method:getAll()]"/>
-    <testcase name="getAllByCategory" classname="com.shopcart.backend.Products.ProductsTest" time="0.006" displayname="getAllByCategory()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]/[method:getAllByCategory()]"/>
-    <testcase name="getAllByFiltername" classname="com.shopcart.backend.Products.ProductsTest" time="0.006" displayname="getAllByFiltername()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Products.ProductsTest]/[method:getAllByFiltername()]"/>
-  </testsuite>
-</testrun>

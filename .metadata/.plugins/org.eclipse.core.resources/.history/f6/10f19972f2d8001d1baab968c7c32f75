@@ -1,5 +1,0 @@
-package com.shopcart.backend.repository;
-
-public interface ProductsRepository {
-
-}

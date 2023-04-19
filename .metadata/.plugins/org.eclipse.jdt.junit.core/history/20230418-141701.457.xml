@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="CartTests" project="shoppingcart" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopcart.backend.Cart.CartTests" time="0.108" displayname="CartTests" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Cart.CartTests]">
-    <testcase name="getAllCartUserId" classname="com.shopcart.backend.Cart.CartTests" time="0.108" displayname="getAllCartUserId()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Cart.CartTests]/[method:getAllCartUserId()]"/>
-  </testsuite>
-</testrun>

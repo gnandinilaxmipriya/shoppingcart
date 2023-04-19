@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="UsersTests" project="shoppingcart" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopcart.backend.Users.UsersTests" time="0.12" displayname="UsersTests" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]">
-    <testcase name="checkUserExists" classname="com.shopcart.backend.Users.UsersTests" time="0.12" displayname="checkUserExists()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:checkUserExists()]"/>
-  </testsuite>
-</testrun>

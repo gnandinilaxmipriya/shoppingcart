@@ -1,5 +1,0 @@
-package com.shopcart.backend.exception;
-
-public class UserEmailException {
-
-}

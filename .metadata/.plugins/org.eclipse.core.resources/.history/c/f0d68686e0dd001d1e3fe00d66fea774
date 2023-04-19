@@ -65,7 +65,38 @@ public class ProductsTest {
 		assertEquals(product,product2.get(0));
 		
 	}
-
+//	@Test
+//	public void getAllByFiltername() {
+//		Products product = new Products();
+//		int id= 1;
+//		product.setProductId((long) id);
+//		product.setName("Nokia");
+//		product.setCategory("Device");
+//		Mockito.when(productsRepository.findAllByFilterName("Device", "Nokia")).thenReturn(asList(product));
+//		ArrayNode arrayNode = new ObjectMapper().createArrayNode();
+//		arrayNode.add("Nokia");
+//		ObjectNode objectNode = new ObjectNode(null);
+//		objectNode.set("name", arrayNode);
+//		List<Products> product2 = productsService.getAllByFiltername("Device", objectNode);
+//		assertNotNull(product2);
+//	}
+//	@Test
+//	public void getAllByFilterprice() {
+//		Products product = new Products();
+//		int id= 1;
+//		product.setProductId((long) id);
+//		product.setName("Nokia");
+//		product.setCategory("Device");
+//		product.setPrice("1000");
+//		Mockito.when(productsRepository.findAllByFilterPrice("Device", "1000")).thenReturn(asList(product));
+//		ArrayNode arrayNode = new ObjectMapper().createArrayNode();
+//		arrayNode.add("1000");
+//		ObjectNode objectNode = new ObjectNode(null);
+//		objectNode.set("price", arrayNode);
+//		List<Products> product2 = productsService.getAllByFilterprice("Device", objectNode);
+//		assertNotNull(product2);
+//	}
+//	
 	@Test
 	public void getAllByFilter()
 	{

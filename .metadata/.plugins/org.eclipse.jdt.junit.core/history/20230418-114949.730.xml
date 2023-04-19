@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="UsersTests" project="shoppingcart" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopcart.backend.Users.UsersTests" time="0.144" displayname="UsersTests" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]">
-    <testcase name="checkUserExists" classname="com.shopcart.backend.Users.UsersTests" time="0.098" displayname="checkUserExists()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:checkUserExists()]"/>
-    <testcase name="getNotActiveUser" classname="com.shopcart.backend.Users.UsersTests" time="0.008" displayname="getNotActiveUser()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getNotActiveUser()]"/>
-    <testcase name="getProfile" classname="com.shopcart.backend.Users.UsersTests" time="0.008" displayname="getProfile()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getProfile()]"/>
-    <testcase name="checkUserDoesntexists" classname="com.shopcart.backend.Users.UsersTests" time="0.009" displayname="checkUserDoesntexists()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:checkUserDoesntexists()]"/>
-    <testcase name="getActiveUser" classname="com.shopcart.backend.Users.UsersTests" time="0.008" displayname="getActiveUser()" uniqueid="[engine:junit-jupiter]/[class:com.shopcart.backend.Users.UsersTests]/[method:getActiveUser()]"/>
-  </testsuite>
-</testrun>
